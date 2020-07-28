@@ -4,3 +4,4 @@ static/*
 *.db
 paths.py
 .vscode/*
+management/auth_token.txt
