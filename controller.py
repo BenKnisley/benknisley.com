@@ -7,6 +7,7 @@ from flask import Flask, url_for, request, render_template
 app = Flask(__name__, static_folder="static")
 
 import model
+from paths import db_path, static_path
 
 @app.route('/')
 def index():
@@ -77,6 +78,6 @@ def add_page(page_id=None):
     ## Save all posted files to static dir
     files = request.files
     for filename in files:
-        files[filename].save(f"/var/www/benknisley.com/static/{filename}")
+        files[filename].save(f"{static_path}/{filename}")
 
     return page_id, 200

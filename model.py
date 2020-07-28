@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Author: Ben Knisley [benknisley@gmail.com]
 Date: 28 July, 2020
@@ -10,7 +9,8 @@ import random
 import hashlib, binascii
 import datetime
 
-db_path = "/var/www/benknisley.com/database.db"
+from paths import db_path, static_path
+
 
 def generate_pageid():
     """

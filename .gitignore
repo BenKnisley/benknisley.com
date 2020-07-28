@@ -2,3 +2,5 @@ venv/
 *.pyc
 static/*
 *.db
+paths.py
+.vscode/*
