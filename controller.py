@@ -51,7 +51,7 @@ def get_post(post_id):
 
 
 @app.route('/add_page', methods=['POST'])
-@app.route('/page/<page_id>', methods=['POST'])
+@app.route('/update_page/<page_id>', methods=['POST'])
 def add_page(page_id=None):
     """
     Post method that adds a new page to database
