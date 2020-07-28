@@ -5,23 +5,16 @@ Date: 28 July, 2020
 """
 import sys
 import sqlite3
+import time
+import random
+import hashlib, binascii
 
-db_path = "./basic.db"
-
-"""
-Database schema
-
-Tables:
-    * Posts
-        - pageid
-        - share/title id
-        - title
-        - html
-"""
+db_path = "./database.db"
 
 def init_database():
     create_auth_table()
     create_pages_table()
+    print(generate_auth_token())
 
 def create_pages_table():
     print("Creating Database")
@@ -33,6 +26,7 @@ def create_pages_table():
     CREATE TABLE `pages` (
 	`page_id`	TEXT NOT NULL UNIQUE,
 	`title_id`	TEXT NOT NULL UNIQUE,
+    `timestamp`	INTEGER,
 	`title`	TEXT,
 	`html`	TEXT,
 	PRIMARY KEY(`page_id`));
@@ -44,6 +38,20 @@ def create_pages_table():
     sql.execute(query, args)
 
     ## Add changes to database
+    conn.commit()
+
+    ## Setup add query
+    query = "INSERT INTO pages VALUES (?, ?, ?, ?, ?)"
+
+    ## Add home placeholder
+    args = ('index', 'index', 0, 'Home', '<hr>')
+    sql.execute(query, args)
+
+    ## Add resume placeholder
+    args = ('resume', 'resume', 0, 'Resume', '<hr>')
+    sql.execute(query, args)
+
+    ## Commit changes to database
     conn.commit()
 
 def create_auth_table():
@@ -68,10 +76,6 @@ def create_auth_table():
     ## Add changes to database
     conn.commit()
 
-
-
-
-
 def add_demo_page():
     print("Adding Demo Page")
     conn = sqlite3.connect(db_path)
@@ -87,14 +91,44 @@ def add_demo_page():
     ## Commit changes to database
     conn.commit()
 
+##
+def generate_auth_token():
+    id_length = 50
+    chars = 'abcdefghijklmnopqrstuvwxyz'
+    digits = '0123456789'
 
+    ## Get one random char, can't be digit
+
+    ## Create rest of string
+    new_token = ''.join(random.choice(chars + digits) for _ in range(id_length))
+
+    ## Generate hash
+    hash_code = hashlib.pbkdf2_hmac('sha256', bytes(new_token, 'utf-8'), b'saltwater', 500000)
+    hash_code = str(binascii.hexlify(hash_code), 'utf-8')
+
+    ## Create database connection and cursor
+    conn = sqlite3.connect(db_path)
+    sql = conn.cursor()
+    
+    ## Setup query
+    query = "INSERT INTO auth_tokens VALUES (NULL, ?, ?)"
+    args = (int(time.time()), hash_code)
+
+    ## Send query to database, and commit
+    sql.execute(query, args)
+    conn.commit()
+
+    ## Return new_token
+    return new_token
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         command_dict = {
+            'init_database': init_database,
+            'generate_auth_token': generate_auth_token,
             'create_pages_table':create_pages_table,
             'add_demo_page':add_demo_page,
             'create_auth_table': create_auth_table
             }
-        command_dict[sys.argv[1]]()
+        print( command_dict[sys.argv[1]]() )
