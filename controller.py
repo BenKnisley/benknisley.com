@@ -77,6 +77,6 @@ def add_page(page_id=None):
     ## Save all posted files to static dir
     files = request.files
     for filename in files:
-        files[filename].save(f"./static/{filename}")
+        files[filename].save(f"/var/www/benknisley.com/static/{filename}")
 
     return page_id, 200
