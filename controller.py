@@ -56,7 +56,6 @@ def add_page(page_id=None):
     """
     Post method that adds a new page to database
     """
-    print(page_id)
     ## Confirm args exist
     if 'auth' not in request.form:
         return 'error'

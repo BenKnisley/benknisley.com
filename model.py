@@ -10,7 +10,7 @@ import random
 import hashlib, binascii
 import datetime
 
-db_path = "./database.db"
+db_path = "/var/www/benknisley.com/database.db"
 
 def generate_pageid():
     """

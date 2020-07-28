@@ -2,15 +2,15 @@
 
 import requests
 
-url = 'http://127.0.0.1:5000/add_page'
+url = 'https://benknisley.com/update_page/index'
 post_data = {
-    'title': 'PyMapKit',
-    'auth': 'tcc9sqigug4wf5ty3m1ctstjdtvt2r0z6q3m216dco10hb7dei',
-    'data': '<h1>It Works</h1><p>Better Homepage Update</p>' 
+    'auth': 'b4pn4zt6pg1oukv2y2cyhe95by6hvv5wvrp2p88cl6y3slnn3f',
+    'title': 'Homepage',
+    'data': '<h1>Ben Knisley</h1><p>HomePage</p>'
     }
     
 files = {
-    'hello.png': open('/home/ben/Development/Resources/image.png', 'rb')
+    'profile.jpg': open('/home/ben/Pictures/Profile Pictures/profile.jpg', 'rb')
 }
 
 x = requests.post(url, data=post_data, files=files)
