@@ -28,7 +28,8 @@ def post_index():
     ##
     posts = model.get_posts()
 
-    ## 
+    ## Add paging here
+    #=>
     return render_template('blog_index.html', title=title, posts=posts)
 
 
@@ -42,6 +43,7 @@ def get_post(post_id):
     if post_data == None:
         return '404', 404
 
+    ##
     title, html = post_data
 
     ## Returned rendered template
