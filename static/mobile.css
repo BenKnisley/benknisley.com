@@ -1,0 +1,43 @@
+@media only screen and (max-device-width: 5in) {
+
+  body{
+    font-size: 24pt;
+    width: 90%;
+  }
+
+  header{
+    margin-bottom: 1em;
+  }
+
+  nav{
+    font-size: 32pt;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  nav a{
+    line-height: 2em;
+  }
+
+  footer{
+    font-size: 18pt;
+  }
+
+  article b{
+    font-size: 28pt;
+  }
+  
+  article i{
+    font-size: 28pt;
+  }
+
+  code{
+    font-size: 24pt;
+  }
+
+  output{
+    font-size: 24pt;
+  }
+
+
+}

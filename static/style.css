@@ -1,0 +1,98 @@
+article p{
+  color:#3f3f3f;
+}
+
+article li{
+  margin-top: 0.75em;
+}
+
+
+article h1, h2, h3, h4, h5, h6{
+  margin: 0em;
+}
+
+article h1{
+  font-size: 2em;
+}
+
+div.button{
+  background-color: #316999;
+  display: inline-block;
+  padding: 0.75em;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+div.button:hover{
+  background-color: #265278;
+}
+
+
+
+img{
+  max-width: 85%;
+  display: block;
+  margin: auto;
+  box-shadow: 2.5px 5px 5px;
+}
+
+img.right{
+  margin: 1em;
+  float: right;
+}
+
+img.left{
+  margin: 1em;
+  float: left;
+}
+
+/* Code style elements  */ 
+code{
+  white-space: pre-line;
+  font-size: 10pt;
+  margin-top: 1em;
+  padding: 1em;
+  display: block;
+  border: 1px solid #316999;
+  border-left: 4px solid #316999;
+}
+
+output{
+  white-space: pre-line;
+  font-size: 10pt;
+  margin-top: 1em;
+  padding: 1em;
+  display: block;
+  border: 1px solid #993147;
+  border-left: 4px solid #993147;
+}
+
+code::first-line{
+  line-height: 0;
+}
+
+output::first-line{
+  line-height: 0;
+}
+
+code tab { 
+  position: relative;
+  left:25px;  
+}
+
+
+article b{
+  font-size: 14pt;
+  color: #316999;
+}
+
+article i{
+  font-size: 14pt;
+  color: #993147;
+}
+
+hr.dashed{
+  border: none;
+  border-top: dashed;
+  height: 1em;
+}

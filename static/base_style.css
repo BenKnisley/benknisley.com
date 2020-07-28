@@ -1,0 +1,67 @@
+body{
+  background-color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 13pt;
+  color: #282828;
+  margin: auto;
+  margin-top: 1em;
+  width: 40em;
+  padding: 1em;
+}
+
+header{
+  margin-bottom: 2.5em;
+  padding-left: 1.5em;
+}
+
+nav{
+  font-size: 16pt;
+}
+
+
+nav a{
+  margin: 0.5em;
+  text-decoration: none;
+  color: #555555;
+}
+
+nav a:hover{
+  border-top:4px solid #316999;
+}
+
+
+main{
+  min-height: 12em;
+  overflow: auto;
+}
+
+aside{
+  float: left;
+  background-color:#993147;
+  vertical-align: top;
+  height: 10em;
+  width: 0.5em;
+  margin-left: 0em;
+  margin-right: 1.5em;
+}
+
+article{
+  float: left;
+  width: calc(100% - 2em);
+}
+
+footer{
+  padding: 1em;
+  font-size: 9pt;
+}
+
+footer hr{
+  border: none;
+  background-color: #316999;
+  height: 0.25em;
+  width: 10em;
+  float: left;
+}
+
+
+

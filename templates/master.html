@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>{% block title %}{% endblock %} | BenKnisley.com</title>
+    <base href="/static/">
+    <link rel="stylesheet" href="base_style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  </head>
+
+  <body>
+
+    <header>
+      <nav>
+        <a href="../">HOME</a>
+        <a href="../resume">CV</a>
+        <a href="../projects">PROJECTS</a>
+        <a href="https://github.com/BenKnisley">GITHUB</a>
+        <a href="https://www.linkedin.com/in/benknisley/">LINKEDIN</a>
+        <a href="mailto:ben@knisley.co">EMAIL</a>
+      </nav>
+    </header>
+    
+    <main> 
+      <aside><br></aside>
+      <article>
+        {% block content %}{% endblock %}
+      </article>
+    </main>
+
+
+    <footer>
+      <hr><br>
+      <p>&copy; BEN KNISLEY 2020</p>
+    </footer>
+
+    </body>
+  </html>
