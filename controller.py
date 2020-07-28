@@ -6,7 +6,10 @@ Date: 27 July, 2020
 from flask import Flask, url_for, request, render_template
 app = Flask(__name__, static_folder="static")
 
+## Import Model
 import model
+
+## Import database and static dir
 from paths import db_path, static_path
 
 @app.route('/')
@@ -20,10 +23,10 @@ def resume():
     title, html = model.get_page('resume')
     return render_template('page.html', title=title, html=html)
 
-
 @app.route('/blog')
 @app.route('/projects')
 def post_index():
+    """ Blog index, shows all blog posts """
     title = "Blog Posts"
 
     ##

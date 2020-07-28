@@ -22,7 +22,7 @@ post_data = {
     }
     
 files = {
-    'profile.jpg': open('/home/ben/Pictures/Profile Pictures/profile.jpg', 'rb')
+#    'profile.jpg': open('/home/ben/Pictures/Profile Pictures/profile.jpg', 'rb')
 }
 
 x = requests.post(url, data=post_data, files=files)
