@@ -1,5 +1,7 @@
 article p{
   color:#3f3f3f;
+  font-size: 16pt;
+  line-height: 1.5em;
 }
 
 article li{
@@ -82,12 +84,11 @@ code tab {
 
 
 article b{
-  font-size: 14pt;
+
   color: #316999;
 }
 
 article i{
-  font-size: 14pt;
   color: #993147;
 }
 
