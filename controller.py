@@ -90,4 +90,4 @@ def add_page(title_id=None):
 
 @app.errorhandler(404)
 def http_404(error):
-    return render_template('page.html', title="404 Not Found", html="<h1>404 Not Found</h1><hr><p>Sorry, page does not exist... <br>yet?</p>")
+    return render_template('page.html', title="404 Not Found", html="<h1>404 Not Found</h1><hr><p>Sorry, page does not exist... <br>yet?</p>"), 404
