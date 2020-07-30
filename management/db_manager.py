@@ -15,6 +15,7 @@ def init_database():
     create_auth_table()
     create_pages_table()
     print(generate_auth_token())
+    print("Don't forget to run 'chown www-data:www-data ./database.db' and chmod 0777 ./database.db")
 
 def create_pages_table():
     print("Creating Database")
@@ -91,6 +92,23 @@ def add_demo_page():
     ## Commit changes to database
     conn.commit()
 
+def delete_page(title_id):
+    print(f"deleting {title_id}")
+    conn = sqlite3.connect(db_path)
+    sql = conn.cursor()
+
+    ## Setup query
+    query = "DELETE FROM pages WHERE title_id = ?;"
+
+    ## Setup query arguments
+    args = (title_id)
+
+    ## Send query to database
+    sql.execute(query, args)
+
+    ## Add changes to database
+    conn.commit()
+
 ##
 def generate_auth_token():
     id_length = 50
@@ -129,6 +147,20 @@ if __name__ == "__main__":
             'generate_auth_token': generate_auth_token,
             'create_pages_table':create_pages_table,
             'add_demo_page':add_demo_page,
-            'create_auth_table': create_auth_table
+            'create_auth_table': create_auth_table,
+            'delete_page': delete_page
             }
-        print( command_dict[sys.argv[1]]() )
+        
+        if sys.argv[2:]:
+            print( command_dict[sys.argv[1]](sys.argv[2:]))
+        else:
+            print( command_dict[sys.argv[1]]())
+    else: 
+        print("Commands:")
+        print("============================")
+        print('db_manager.py init_database')
+        print('db_manager.py generate_auth_token')
+        print('db_manager.py create_pages_table')
+        print('db_manager.py add_demo_page')
+        print('db_manager.py create_auth_table')
+        print('db_manager.py delete_page <page_id>')
