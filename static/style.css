@@ -53,8 +53,8 @@ code{
   margin-top: 1em;
   padding: 1em;
   display: block;
-  border: 1px solid #316999;
-  border-left: 4px solid #316999;
+  border: 1px solid #993147;
+  border-left: 4px solid #993147;
 }
 
 output{
@@ -63,8 +63,8 @@ output{
   margin-top: 1em;
   padding: 1em;
   display: block;
-  border: 1px solid #993147;
-  border-left: 4px solid #993147;
+  border: 1px solid #316999;
+  border-left: 4px solid #316999;
 }
 
 code::first-line{
