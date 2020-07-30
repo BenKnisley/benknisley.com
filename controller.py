@@ -32,9 +32,12 @@ def post_index():
     ##
     posts = model.get_posts()
 
+    ## Reverse posts
+    posts.reverse()
+
     ## Add paging here
     #=>
-    return render_template('blog_index.html', title=title, posts=posts)
+    return render_template('blog_index.html', title=title, posts=posts) 
 
 ## post_id == title_id or page_id
 @app.route('/<post_id>')
