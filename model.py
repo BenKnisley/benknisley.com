@@ -16,7 +16,7 @@ def generate_pageid():
     """
     Generates a pageID
     """
-    ## Create pool of chars and numbers to select from, abd lenght of ID
+    ## Create pool of chars and numbers to select from, abd length of ID
     id_length = 7
     chars = 'abcdefghijklmnopqrstuvwxyz'
     digits = '0123456789'
@@ -44,8 +44,8 @@ def add_page(title, html):
     conn = sqlite3.connect(db_path)
     sql = conn.cursor()
 
-    page_id = generate_pageid()
     title_id = generate_title_id(title)
+    page_id = generate_pageid()
     timestamp = int(time.time())
 
     ## Setup query
@@ -60,19 +60,19 @@ def add_page(title, html):
 
     return page_id
 
-def update_page(page_id, title, html):
+def update_page(title_id, title, html):
     conn = sqlite3.connect(db_path)
     sql = conn.cursor()
 
-    title_id = generate_title_id(title)
+    new_title_id = generate_title_id(title)
 
     ## Setup query
     query = """
         UPDATE pages
         SET title_id = ?, title = ?, html = ?
-        WHERE page_id = ?; 
+        WHERE title_id = ?; 
     """
-    args = (title_id, title, html, page_id)
+    args = (new_title_id, title, html, title_id)
 
     ## Send query to database
     sql.execute(query, args)
@@ -80,14 +80,16 @@ def update_page(page_id, title, html):
     ## Commit changes to database
     conn.commit()
 
-def get_page(id):
+    return new_title_id
+
+def get_page(post_id): ## title or pageid
     ## Create database connection and cursor
     conn = sqlite3.connect(db_path)
     sql = conn.cursor()
 
     ## Setup query
     query = "SELECT title, html FROM pages WHERE page_id=? OR title_id=?;"
-    args = (id, id,)
+    args = (post_id, post_id,)
 
     ## execute query on database
     sql.execute(query, args)
@@ -101,7 +103,7 @@ def get_posts():
     sql = conn.cursor()
 
     ## Setup query
-    query = "SELECT page_id, title, timestamp FROM pages;"
+    query = "SELECT title_id, title, timestamp FROM pages;"
     args = ()
 
     ## execute query on database
@@ -111,11 +113,11 @@ def get_posts():
     posts = []
 
     for page in pages:
-        ## Uppack page
-        page_id, title, timestamp = page
+        ## Unpack page
+        title_id, title, timestamp = page
         
         ## Skip index and resume
-        if page_id in ('index', 'resume'):
+        if title_id in ('index', 'resume'):
             continue
 
         ## Create a list to store post data
@@ -134,7 +136,6 @@ def get_posts():
 
     ## Get and return data from query
     return posts
-
 
 ##
 def generate_auth_token():
