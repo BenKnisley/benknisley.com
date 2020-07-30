@@ -117,7 +117,7 @@ def get_posts():
         title_id, title, timestamp = page
         
         ## Skip index and resume
-        if title_id in ('index', 'resume'):
+        if title_id in ('home', 'resume'):
             continue
 
         ## Create a list to store post data
