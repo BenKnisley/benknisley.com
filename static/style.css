@@ -2,6 +2,8 @@ article p{
   color:#3f3f3f;
   font-size: 16pt;
   line-height: 1.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 article li{
@@ -41,11 +43,15 @@ img{
 img.right{
   margin: 1em;
   float: right;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 img.left{
   margin: 1em;
   float: left;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 /* Code style elements  */ 
