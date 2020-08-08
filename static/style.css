@@ -8,11 +8,15 @@ article p{
 
 article li{
   margin-top: 0.75em;
+  color:#3f3f3f;
+  font-size: 16pt;
 }
 
 
 article h1, h2, h3, h4, h5, h6{
+  color:#3f3f3f;
   margin: 0em;
+  margin-top: 18px;
 }
 
 article h1{
@@ -83,10 +87,33 @@ output::first-line{
   line-height: 0;
 }
 
-code tab { 
-  position: relative;
-  left:25px;  
+
+.blue-wrapped{
+  margin-top: 1em;
+  padding: 1em;
+  padding-top:0.5em;
+  display: inline-block;
+  border: 1px solid #316999;
+  border-left: 4px solid #316999;
 }
+
+.blue-wrapped > :first-child{
+  margin-top: 0em;
+}
+
+.red-wrapped{
+  margin-top: 1em;
+  padding: 1em;
+  padding-top:0.5em;
+  display: inline-block;
+  border: 1px solid #993147;
+  border-left: 4px solid #993147;
+}
+
+.red-wrapped > :first-child{
+  margin-top: 0em;
+}
+
 
 
 article b{
@@ -101,5 +128,13 @@ article i{
 hr.dashed{
   border: none;
   border-top: dashed;
-  height: 1em;
+  border-color:#3f3f3f;
+  height: 0.5em;
+}
+
+hr.dotted{
+  border: none;
+  border-top: dotted;
+  border-color:#3f3f3f;
+  height: 0.5em;
 }

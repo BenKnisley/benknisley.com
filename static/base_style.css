@@ -36,6 +36,7 @@ main{
 }
 
 aside{
+  margin-top: 1.5em;
   float: left;
   background-color:#993147;
   vertical-align: top;
