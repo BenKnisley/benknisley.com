@@ -21,6 +21,7 @@ def index():
 @app.route('/cv')
 def resume():
     title, html = model.get_page('resume')
+
     return render_template('page.html', title=title, html=html)
 
 @app.route('/blog')
@@ -77,10 +78,14 @@ def add_page(title_id=None):
 
 
     if title_id: ## If flagged edit existing post
-        title_id = model.update_page(title_id, request.form['title'], request.form['data'])
+        title = request.form['title']
+        title = title.title()
+        title_id = model.update_page(title_id, title, request.form['data'])
 
     else: ## Not flagged add new post
-        page_id = model.add_page(request.form['title'], request.form['data'])
+        title = request.form['title']
+        title = title.title()
+        page_id = model.add_page(title, request.form['data'])
 
     ## Save all posted files to static dir
     files = request.files
