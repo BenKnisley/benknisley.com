@@ -79,7 +79,7 @@ def add_page(title_id=None):
 
     if title_id: ## If flagged edit existing post
         title = request.form['title']
-        title = title.title()
+        #title = title.title()
         title_id = model.update_page(title_id, title, request.form['data'])
 
     else: ## Not flagged add new post
